@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="sprint3.css" media="screen" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint Final</title>
+</head>
+
+<body>
+    <div class="container">
+    <h1>Cotação de moedas</h1>
+    <img src="https://cdn-icons-png.flaticon.com/512/7500/7500366.png"/>
+    <form name="sprint3"></form>
+    <label for="moedas">Selecione uma moeda:</label>
+    <select name="moedas" id="moedas" required>
+        <option></option>
+        <option value="USD" name="dolar" id="dolar">Dólar Americano</option>
+        <option value="EUR" name="euro" id="euro">Euro</option>
+        <option value="BTC" name="bitcoin" id="bitcoin">BitCoin</option>
+        <option value="CAD" name="dolarcanadense" id="dolarcanadense">Dólar Canadense</option>
+        <option value="GBP" name="libra" id="libra">Libra Esterlina</option>
+        <option value="ARS" name="peso" id="peso">Peso Argentino</option>
+        <option value="JPY" name="iene" id="iene">Iene Japonês</option>
+        <option value="CHF" name="franco" id="franco">Franco Suiço</option>
+        <option value="AUD" name="dolaraustraliano" id="dolaraustraliano">Dólar Australiano</option>
+        <option value="CNY" name="yuan" id="yuan">Yuan Chinês</option>
+        <option value="ILS" name="shekel" id="shekel">Shekel Israelense</option>
+    </select>
+
+    <button type="submit" class="botaocotacao" onclick="botao()">Cotação atual</button>
+
+</div>
+<div class="videodolar">
+    <h2>O que é o Dólar ?</h2>
+    <iframe width="500" height="406" src="https://www.youtube.com/embed/Q3hgkDu5MXk" title="O que é o dólar? Você vai se surpreender" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="videoeuro">
+    <h2>O que é o Euro ?</h2>
+    <iframe width="500" height="406" src="https://www.youtube.com/embed/T4OkUkvNzv8" title="Historia do Euro - Moedas usadas antes do Euro | Universum" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <div class="videobitcoin">
+    <h2>O que é o BitCoin ?</h2>
+    <iframe width="500" height="406" src="https://www.youtube.com/embed/-sTmOAacLRY" title="O que é Bitcoin?" frameborder="1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
+
+<div class="duvidas">
+<h1><u>Dúvidas Frequentes</u></h1>
+</div>
+
+<section>
+    <details>
+        <summary>O que é o Conversor de Moedas ?</summary>
+        <p>O Conversor de Moedas é uma ferramente que permite o usuário verificar o valor mais recente das principais moedas
+            do mundo, com rapidez e extrema praticidade.
+        </p>
+    </details>
+    <details>
+        <summary>Como funciona o Conversor de Moedas ?</summary>
+        <p>O Conversor de Moedas faz o uso de uma API gratuita (AwesomeAPI), que traz o valor das moedas em tempo real!</br>
+            Aqui está o site da API para o uso: docs.awesomeapi.com.br/api-de-moedas
+        </p>
+    </details>
+    <details>
+        <summary>Por quê converter moeda online ?</summary>
+        <p>Atualmente, a conversão de moedas pode ser feita de forma online e é um recurso que cabe na palma da sua mão.
+            O câmbio pode ser feito pelo celular e pelo computador, o que facilita e muito o acesso a moedas estrangeiras.</br>
+            Além disso, uma das vantagens de converter está justamente na facilidade de informações.
+            Como a moeda é um item sujeito a muitas intervenções internas e externas, é possível adquiri-la em
+            seu melhor momento durante o dia.</p>
+    </details>
+</section>
+
+</body>
+
+<script>
+
+    function botao() {
+        var select = document.getElementById("moedas");
+        var value = select.options[select.selectedIndex].value;
+        console.log(value);
+        if (value == "USD") {
+            fetch('https://economia.awesomeapi.com.br/last/USD-BRL').then(resposta => {
+                return resposta.json()
+            }).then(corpo => {
+                console.log(corpo['USDBRL']['bid'])
+                alert("A cotação atual do Dólar Americano é R$" + corpo['USDBRL']['bid']);
+            })}
+        if (value == "EUR") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/EUR-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['EURBRL']['bid'])
+                    alert("A cotação atual do Euro é R$" + corpo['EURBRL']['bid']);
+                }
+                )
+            }
+            if (value == "BTC") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/BTC-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['BTCBRL']['bid'])
+                    alert("A cotação atual do BitCoin é R$" + corpo['BTCBRL']['bid']);
+                }
+                )
+            }
+            if (value == "CAD") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/CAD-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['CADBRL']['bid'])
+                    alert("A cotação atual do Dólar Canadense é R$" + corpo['CADBRL']['bid']);
+                }
+                )
+            }
+            if (value == "GBP") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/GBP-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['GBPBRL']['bid'])
+                    alert("A cotação atual da Libra Esterlina é R$" + corpo['GBPBRL']['bid']);
+                }
+                )
+            }
+            if (value == "ARS") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/ARS-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['ARSBRL']['bid'])
+                    alert("A cotação atual do Peso Argentino é R$" + corpo['ARSBRL']['bid']);
+                }
+                )
+            }
+            if (value == "JPY") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/JPY-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['JPYBRL']['bid'])
+                    alert("A cotação atual do Iene Japonês é R$" + corpo['JPYBRL']['bid']);
+                }
+                )
+            }
+            if (value == "CHF") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/CHF-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['CHFBRL']['bid'])
+                    alert("A cotação atual do Franco Suiço é R$" + corpo['CHFBRL']['bid']);
+                }
+                )
+            }
+            if (value == "AUD") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/AUD-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['AUDBRL']['bid'])
+                    alert("A cotação atual do Dólar Australiano é R$" + corpo['AUDBRL']['bid']);
+                }
+                )
+            }
+            if (value == "CNY") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/CNY-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['CNYBRL']['bid'])
+                    alert("A cotação atual do Yuan Chinês é R$" + corpo['CNYBRL']['bid']);
+                }
+                )
+            }
+            if (value == "ILS") {
+            console.log(value);
+            fetch('https://economia.awesomeapi.com.br/last/ILS-BRL').then(resposta => {
+                    return resposta.json()
+                }).then(corpo => {
+                    console.log(corpo['ILSBRL']['bid'])
+                    alert("A cotação atual do Shekel Israelense é R$" + corpo['ILSBRL']['bid']);
+                }
+                )
+            }
+        }
+</script>
+
+</html>
